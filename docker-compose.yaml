@@ -1,0 +1,30 @@
+version: '3.8'
+services:
+  ivan-api:
+    build:
+      dockerfile: Dockerfile
+      context: ./
+    volumes:
+      - ./:/app
+    ports:
+    - 8080:8080
+  db:
+    image: postgres:14.1-alpine
+    restart: always
+    networks:
+      - ivan-network
+    environment:
+      - POSTGRES_USER=ivan
+      - POSTGRES_PASSWORD=dev
+      - POSTGRES_DB=ivan-db
+    ports:
+      - '5432:5432'
+    volumes: 
+      - db:/var/lib/postgresql/data
+volumes:
+  db:
+    driver: local
+networks:
+  ivan-network:
+    name: ivan-network
+    driver: bridge

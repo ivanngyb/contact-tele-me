@@ -21,7 +21,7 @@ func main() {
 				Aliases: []string{"s"},
 				Flags: []cli.Flag{
 					&cli.StringFlag{Name: "environment", Value: "development", EnvVars: []string{envPrefix + "_environment"}, Usage: "Environment as to what the server is running in"},
-					&cli.StringFlag{Name: "api_addr", Value: ":8084", EnvVars: []string{envPrefix + "_API_ADDR", "API_ADDR"}, Usage: "Port for which server will run on"},
+					&cli.StringFlag{Name: "api_addr", Value: ":8080", EnvVars: []string{envPrefix + "_API_ADDR", "API_ADDR"}, Usage: "Port for which server will run on"},
 					&cli.StringFlag{Name: "log_level", Value: "DebugLevel", EnvVars: []string{envPrefix + "_LOG_LEVEL", "LOG_LEVEL"}, Usage: "Log level for logger"},
 				},
 				Usage: "Run server",
