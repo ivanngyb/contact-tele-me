@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 services:
   ivan-api:
     build:
@@ -7,7 +7,7 @@ services:
     volumes:
       - ./:/app
     ports:
-    - 8080:8080
+      - 8080:8080
   db:
     image: postgres:14.1-alpine
     restart: always
@@ -18,8 +18,8 @@ services:
       - POSTGRES_PASSWORD=dev
       - POSTGRES_DB=ivan-db
     ports:
-      - '5432:5432'
-    volumes: 
+      - "5432:5432"
+    volumes:
       - db:/var/lib/postgresql/data
 volumes:
   db:

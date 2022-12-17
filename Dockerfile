@@ -9,5 +9,4 @@ ADD ./server /usr/share/ivan-api/server
 RUN go build -o ./main ./cmd/ivan-server
 EXPOSE 8080
 
-
 CMD [ "./main serve" ]
