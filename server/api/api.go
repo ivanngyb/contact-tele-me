@@ -34,6 +34,7 @@ func NewAPI(ctx context.Context, config *Config) *API {
 		r.Get("/check", func(w http.ResponseWriter, r *http.Request) {
 			w.Write([]byte("OK"))
 		})
+		r.Post("/send", WithError(SendTeleMessage))
 	})
 
 	return api
