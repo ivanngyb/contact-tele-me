@@ -2,9 +2,11 @@ package api
 
 import (
 	"context"
+	"errors"
 	"log"
 	"net"
 	"net/http"
+	"server/cmd/server/telegram"
 	"time"
 
 	"github.com/go-chi/chi/v5"
@@ -40,9 +42,15 @@ func NewAPI(ctx context.Context, config *Config) *API {
 	)
 
 	api.Routes.Route("/api", func(r chi.Router) {
-		r.Get("/check", func(w http.ResponseWriter, r *http.Request) {
-			w.Write([]byte("OK"))
-		})
+		r.Get("/check", WithError(func(w http.ResponseWriter, r *http.Request) (int, error) {
+			isAlive := telegram.TelegramCheck()
+
+			if !isAlive {
+				return http.StatusBadGateway, errors.New("telegram bot seems to be down")
+			}
+
+			return http.StatusOK, nil
+		}))
 		r.Post("/send", WithError(SendTeleMessage))
 	})
 

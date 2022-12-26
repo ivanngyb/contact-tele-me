@@ -35,6 +35,10 @@ func NewBot(token string, chatID int64) error {
 	return nil
 }
 
+func TelegramCheck() bool {
+	return T != nil || T.teleBot != nil
+}
+
 func (t *TeleBot) SendMessage(message string) error {
 	if t.teleBot == nil {
 		return errors.New("telebot not started")
