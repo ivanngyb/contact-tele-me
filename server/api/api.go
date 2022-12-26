@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/go-chi/cors"
 )
 
 type API struct {
@@ -29,6 +30,14 @@ func NewAPI(ctx context.Context, config *Config) *API {
 
 		ctx: ctx,
 	}
+
+	api.Routes.Use(cors.New(
+		cors.Options{
+			AllowedOrigins:   []string{"https://*", "http://*"},
+			AllowedHeaders:   []string{"*"},
+			AllowCredentials: true,
+		}).Handler,
+	)
 
 	api.Routes.Route("/api", func(r chi.Router) {
 		r.Get("/check", func(w http.ResponseWriter, r *http.Request) {

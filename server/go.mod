@@ -5,10 +5,12 @@ go 1.19
 require (
 	github.com/cosmtrek/air v1.40.4
 	github.com/go-chi/chi/v5 v5.0.8
+	github.com/go-chi/cors v1.2.1
 	github.com/golang-migrate/migrate/v4 v4.15.2
 	github.com/rs/zerolog v1.28.0
 	github.com/urfave/cli/v2 v2.23.7
 	github.com/volatiletech/sqlboiler/v4 v4.14.0
+	gopkg.in/telebot.v3 v3.1.2
 )
 
 require (
@@ -54,7 +56,6 @@ require (
 	golang.org/x/text v0.3.7 // indirect
 	golang.org/x/xerrors v0.0.0-20220609144429-65e65417b02f // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
-	gopkg.in/telebot.v3 v3.1.2 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
